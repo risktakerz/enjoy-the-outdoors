@@ -16,6 +16,15 @@
     <h1>National Parks</h1>
     <div class="container mt-4">
       <div class="input-group mb-3">
+        <form>
+          <select id="statesSelect">
+            <option value="">State/Territories...</option>
+          </select>
+        </form>
+      </div>
+    </div>
+    <div class="container mt-4">
+      <div class="input-group mb-3">
         <input
           type="text"
           class="form-control"
@@ -33,18 +42,29 @@
       </div>
     </div>
     <main class="container mt-4">
-      <div class="card p-4" style="width: 18rem">
-        <form>
-          <label for="parkSelect" class="form-label">Parks</label>
-          <select class="form-select" id="parkSelect">
-            <option value="">Select...</option>
-            <!-- 
-                <option value="1">New York</option>
-                <option value="2">New Jersey</option>
-                <option value="3">Ohio</option> -->
-          </select>
-        </form>
-      </div>
+      <h3>National Parks</h3>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Address</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Zip</th>
+            <th>Phone</th>
+            <th>Website</th>
+          </tr>
+        </thead>
+
+        <tbody id="charactersTBody">
+          <!-- <tr> example
+                  <td>SpongeBob SquarePants</td>
+                  <td>Sea Sponge</td>
+                  <td>Fry Cook</td>
+                  <td>Jellyfishing</td>
+              </tr> -->
+        </tbody>
+      </table>
     </main>
 
     <script src="scripts/locationData.js"></script>

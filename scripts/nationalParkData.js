@@ -5813,25 +5813,74 @@ const nationalParksArray = [
   },
 ];
 
-let parkSelector = document.getElementById("parkSelect");
+// let parkSelector = document.getElementById("parkSelect");
 
-for (let i = 0; i < nationalParksArray.length; i++) {
-  const park = nationalParksArray[i];
-  const option = document.createElement("option");
-  option.value = park.LocationID;
-  option.text = park.LocationName;
-  parkSelector.appendChild(option);
+// for (let i = 0; i < nationalParksArray.length; i++) {
+//   const park = nationalParksArray[i];
+//   const option = document.createElement("option");
+//   option.value = park.LocationID;
+//   option.text = park.LocationName;
+//   parkSelector.appendChild(option);
+// }
+
+// parkSelector.addEventListener("change", myFunction);
+
+// function myFunction() {
+//   let selectedPark = parkSelector.value;
+//   console.log("this is:" + selectedPark);
+
+//   for (const park of nationalParksArray){
+//     if (park.LocationID ){
+
+//     }
+//   }
+// }
+
+let charactersTBody = document.querySelector("#charactersTBody");
+console.log(charactersTBody);
+
+for (const parks of nationalParksArray) {
+  let tr = document.createElement("tr");
+  charactersTBody.appendChild(tr);
+
+  let td1 = document.createElement("td");
+  td1.innerText = parks.LocationName;
+  tr.appendChild(td1);
+
+  let td2 = document.createElement("td");
+  td2.innerText = parks.Address;
+  tr.appendChild(td2);
+
+  let td3 = document.createElement("td");
+  td3.innerText = parks.City;
+  tr.appendChild(td3);
+
+  let td4 = document.createElement("td");
+  td4.innerText = parks.State;
+  tr.appendChild(td4);
+
+  let td5 = document.createElement("td");
+  td5.innerText = parks.ZipCode;
+  tr.appendChild(td5);
+
+  let td6 = document.createElement("td");
+  td6.innerText = parks.Phone;
+  tr.appendChild(td6);
+
+  let td7 = document.createElement("td");
+  td7.textContent = parks.Visit;
+  tr.appendChild(td7);
 }
 
-parkSelector.addEventListener("change", myFunction);
+let statesSelect = document.getElementById("statesSelect");
 
-function myFunction() {
-  let selectedPark = parkSelector.value;
-  console.log("this is:" + selectedPark);
+function createOption(value, text) {
+  const option = document.createElement("option");
+  option.value = value;
+  option.textContent = text;
+  statesSelect.appendChild(option);
+}
 
-  for (const park of nationalParksArray){
-    if (park.LocationID ){
-      
-    }
-  }
+for (const optionBox of parkTypesArray) {
+  createOption(optionBox.LocationID, optionBox.LocationName);
 }
