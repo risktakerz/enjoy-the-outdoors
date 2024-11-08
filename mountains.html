@@ -13,28 +13,74 @@
     <title>Mountains</title>
   </head>
   <body>
-    <h1>Mountains</h1>
-    <div class="container mt-4">
-      <div class="input-group mb-3">
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Search"
-          aria-label="Search"
-        />
-
-        <button
-          class="btn btn-outline-secondary"
-          type="button"
-          id="button-addon2"
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="national-parks.html"
+          ><h1>We love Parks!</h1></a
         >
-          Search
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
         </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="index.html"
+                >Home</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="mountains.html">Mountains</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="national-parks.html">National Parks</a>
+            </li>
+          </ul>
+        </div>
       </div>
-    </div>
-
-   
-
+    </nav>
+    <h1>Mountains</h1>
+    <main class="container mt-4">
+      <form style="width: 90rem">
+        <div class="mb-3">
+          <label class="form-label" for="mountainsDropdown">Mountains</label>
+          <select
+            class="form-select"
+            id="mountainsDropdown"
+            onchange="showMountainDetails()"
+          >
+            <option value="">Select...</option>
+          </select>
+        </div>
+      </form>
+      <div
+        id="mountainDetailsDiv"
+        class="card"
+        style="width: 18rem; display: none"
+      >
+        <img
+          id="logoImage"
+          src="https://img.freepik.com/premium-photo/there-is-mountain-with-question-mark-clouds-generative-ai_1034973-35592.jpg"
+          class="card-img-top"
+          alt="logo"
+        />
+      
+        <div class="card-body">
+          <h5 id="cardTitleHeading" class="card-title"></h5>
+          <div class="card-text">
+            <p id="ElevationParagraph"></p>
+            <p id="mountainTextParagraph"></p>
+          </div>
+        </div>
+      </div>
+    </main>
     <script src="scripts/mountainData.js"></script>
     <script src="scripts/mountains.js"></script>
   </body>

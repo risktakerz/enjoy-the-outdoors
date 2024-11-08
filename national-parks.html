@@ -10,40 +10,92 @@
       integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="css/styles.css" />
     <title>Document</title>
   </head>
   <body>
-    <h1>National Parks</h1>
-    <div class="container mt-4">
-      <div class="input-group mb-3">
-        <form>
-          <select id="statesSelect">
-            <option value="">State/Territories...</option>
-          </select>
-        </form>
-      </div>
-    </div>
-    <div class="container mt-4">
-      <div class="input-group mb-3">
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Search"
-          aria-label="Search"
-        />
-
-        <button
-          class="btn btn-outline-secondary"
-          type="button"
-          id="button-addon2"
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="national-parks.html"
+          ><h1>We love Parks!</h1></a
         >
-          Search
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
         </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="index.html"
+                >Home</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="mountains.html">Mountains</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="national-parks.html">National Parks</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container mt-4">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="btn-group">
+            <input
+              type="radio"
+              class="btn-check"
+              id="filterStateBtn"
+              name="filterType"
+              data-bs-toggle="collapse"
+              data-bs-target="#stateFilter"
+              checked
+            />
+
+            <label class="btn btn-outline-primary" for="filterStateBtn"
+              >States/Territories</label
+            >
+
+            <input
+              type="radio"
+              class="btn-check"
+              id="filterParkTypeBtn"
+              name="filterType"
+              data-bs-toggle="collapse"
+              data-bs-target="#parkTypeFilter"
+            />
+
+            <label class="btn btn-outline-primary" for="filterParkTypeBtn"
+              >By Park Type</label
+            >
+          </div>
+          <br />
+          <label for="statesSelect">States/Territories</label>
+          <select class="form-select" id="statesSelect">
+            <option value="">All...</option>
+          </select>
+
+          <label for="parkTypeSelect">Park Types</label>
+          <select class="form-select" id="parkTypeSelect">
+            <option value="">All...</option>
+          </select>
+        </div>
       </div>
     </div>
+
     <main class="container mt-4">
       <h3>National Parks</h3>
-      <table class="table">
+      <table class="table table-striped">
         <thead>
           <tr>
             <th>Name</th>
