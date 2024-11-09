@@ -1,5 +1,6 @@
 let charactersTBody = document.querySelector("#charactersTBody");
 let filterParkTypeBtn = document.getElementById("filterParkTypeBtn");
+let filterStateBtn = document.getElementById("filterStateBtn");
 console.log(charactersTBody);
 
 const nationalParksArray = [
@@ -5817,122 +5818,153 @@ const nationalParksArray = [
   },
 ];
 
-for (const parks of nationalParksArray) {
-  let tr = document.createElement("tr");
-  charactersTBody.appendChild(tr);
-
-  let td1 = document.createElement("td");
-  td1.textContent = parks.LocationName;
-  tr.appendChild(td1);
-
-  let td2 = document.createElement("td");
-  td2.textContent = parks.Address;
-  if (parks.Address == 0) {
-    td2.textContent = "N/A";
-  }
-  tr.appendChild(td2);
-
-  let td3 = document.createElement("td");
-  td3.textContent = parks.City;
-  tr.appendChild(td3);
-
-  let td4 = document.createElement("td");
-  td4.textContent = parks.State;
-  tr.appendChild(td4);
-
-  let td5 = document.createElement("td");
-  td5.textContent = parks.ZipCode;
-  if (parks.ZipCode == 0) {
-    td5.textContent = "N/A";
-  }
-  tr.appendChild(td5);
-
-  let td6 = document.createElement("td");
-  td6.textContent = parks.Phone;
-
-  if (parks.Phone == 0) {
-    td6.textContent = "N/A";
-  }
-  tr.appendChild(td6);
-
-  let td7 = document.createElement("td");
-
-  if (
-    parks.Visit &&
-    (parks.Visit.startsWith("http") || parks.Visit.startsWith("https"))
-  ) {
-    let visitLink = document.createElement("a");
-    visitLink.href = parks.Visit;
-    visitLink.textContent = "Visit Here";
-    td7.appendChild(visitLink);
-  } else {
-    td7.textContent = "N/A";
-  }
-
-  tr.appendChild(td7);
-}
-
-function filterByStates() {
-  let selectedState = statesSelect.value;
-  let filteredStates = nationalParksArray.filter(
-    (state) => (nationalParksArray.State = selectedState)
-  );
-  charactersTBody.innerHTML = "";
-
-  for (const parks of filteredStates) {
+function populateTable(nationalParksArray) {
+  for (const park of nationalParksArray) {
     let tr = document.createElement("tr");
     charactersTBody.appendChild(tr);
 
     let td1 = document.createElement("td");
-    td1.textContent = parks.LocationName;
+    td1.textContent = park.LocationName;
     tr.appendChild(td1);
 
     let td2 = document.createElement("td");
-    td2.textContent = parks.Address;
-    if (parks.Address == 0) {
-      td2.textContent = "N/A";
-    }
+    td2.textContent = park.Address || "N/A";
     tr.appendChild(td2);
 
     let td3 = document.createElement("td");
-    td3.textContent = parks.City;
+    td3.textContent = park.City;
     tr.appendChild(td3);
 
     let td4 = document.createElement("td");
-    td4.textContent = parks.State;
+    td4.textContent = park.State;
     tr.appendChild(td4);
 
     let td5 = document.createElement("td");
-    td5.textContent = parks.ZipCode;
-    if (parks.ZipCode == 0) {
-      td5.textContent = "N/A";
-    }
+    td5.textContent = park.ZipCode || "N/A";
     tr.appendChild(td5);
 
     let td6 = document.createElement("td");
-    td6.textContent = parks.Phone;
-
-    if (parks.Phone == 0) {
-      td6.textContent = "N/A";
-    }
+    td6.textContent = park.Phone || "N/A";
     tr.appendChild(td6);
 
     let td7 = document.createElement("td");
-
-    if (
-      parks.Visit &&
-      (parks.Visit.startsWith("http") || parks.Visit.startsWith("https"))
-    ) {
+    if (park.Visit) {
       let visitLink = document.createElement("a");
-      visitLink.href = parks.Visit;
+      visitLink.href = park.Visit;
       visitLink.textContent = "Visit Here";
       td7.appendChild(visitLink);
     } else {
       td7.textContent = "N/A";
     }
-
     tr.appendChild(td7);
   }
 }
 
+
+populateTable(nationalParksArray);
+
+function filterByStates() {
+  let selectedState = statesSelect.value;
+  let filteredStates = nationalParksArray.filter(
+    (park) => park.State === selectedState || selectedState === ""
+  );
+  charactersTBody.innerHTML = "";
+
+  for (const park of filteredStates) {
+    let tr = document.createElement("tr");
+    charactersTBody.appendChild(tr);
+
+    let td1 = document.createElement("td");
+    td1.textContent = park.LocationName;
+    tr.appendChild(td1);
+
+    let td2 = document.createElement("td");
+    td2.textContent = park.Address || "N/A";
+    tr.appendChild(td2);
+
+    let td3 = document.createElement("td");
+    td3.textContent = park.City;
+    tr.appendChild(td3);
+
+    let td4 = document.createElement("td");
+    td4.textContent = park.State;
+    tr.appendChild(td4);
+
+    let td5 = document.createElement("td");
+    td5.textContent = park.ZipCode || "N/A";
+    tr.appendChild(td5);
+
+    let td6 = document.createElement("td");
+    td6.textContent = park.Phone || "N/A";
+    tr.appendChild(td6);
+
+    let td7 = document.createElement("td");
+    if (park.Visit) {
+      let visitLink = document.createElement("a");
+      visitLink.href = park.Visit;
+      visitLink.textContent = "Visit Here";
+      td7.appendChild(visitLink);
+    } else {
+      td7.textContent = "N/A";
+    }
+    tr.appendChild(td7);
+  }
+}
+
+function filterByParkType() {
+  let selectedState = statesSelect.value; 
+  let selectedParkType = parkTypeSelect.value; 
+
+ 
+  let filteredParks = nationalParksArray.filter(
+    (park) =>
+      (park.State === selectedState || selectedState === "") &&
+      (park.Type === selectedParkType || selectedParkType === "")
+  );
+
+  charactersTBody.innerHTML = "";
+
+  for (const park of filteredParks) {
+    let tr = document.createElement("tr");
+    charactersTBody.appendChild(tr);
+
+    let td1 = document.createElement("td");
+    td1.textContent = park.LocationName;
+    tr.appendChild(td1);
+
+    let td2 = document.createElement("td");
+    td2.textContent = park.Address || "N/A";
+    tr.appendChild(td2);
+
+    let td3 = document.createElement("td");
+    td3.textContent = park.City;
+    tr.appendChild(td3);
+
+    let td4 = document.createElement("td");
+    td4.textContent = park.State;
+    tr.appendChild(td4);
+
+    let td5 = document.createElement("td");
+    td5.textContent = park.ZipCode || "N/A";
+    tr.appendChild(td5);
+
+    let td6 = document.createElement("td");
+    td6.textContent = park.Phone || "N/A";
+    tr.appendChild(td6);
+
+    let td7 = document.createElement("td");
+    if (park.Visit) {
+      let visitLink = document.createElement("a");
+      visitLink.href = park.Visit;
+      visitLink.textContent = "Visit Here";
+      td7.appendChild(visitLink);
+    } else {
+      td7.textContent = "N/A";
+    }
+    tr.appendChild(td7);
+  }
+}
+statesSelect.addEventListener("change", filterByStates);
+filterParkTypeBtn.addEventListener("change", filterByParkType);
 filterParkTypeBtn.addEventListener("click", filterByStates);
+filterParkTypeBtn.addEventListener("click", filterByParkType);

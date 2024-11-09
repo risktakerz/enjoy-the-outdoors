@@ -23,7 +23,7 @@ function showMountainDetails() {
 
     for (const mountain of mountainsArray) {
       if (mountain.name === mountainName) {
-        console.log("Match found!");
+        console.log("test");
         console.log(mountainName);
 
         logoImage.src = `./images/${mountain.img}`; // Set the image source

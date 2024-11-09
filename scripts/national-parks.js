@@ -1,7 +1,7 @@
 
-function loadParks() {
-  for (const park of nationalParksArray) {
+// function loadParks() {
+//   for (const park of nationalParksArray) {
     
-  }
-}
+//   }
+// }
 

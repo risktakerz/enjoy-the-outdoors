@@ -67,12 +67,7 @@ function createStateOption(value, text) {
   statesSelect.appendChild(option);
 }
 
+
 for (const state of locationsArray) {
-  createStateOption(state.LocationID, state);
-}
-
-
-
-function filterByStateType(){
-
+  createStateOption(state, state);
 }

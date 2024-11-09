@@ -1,20 +1,25 @@
-html{
+html {
   scroll-behavior: smooth;
 }
 
-.back1{
-  filter: brightness(.9);
+.back1 {
+  filter: brightness(0.9);
   object-fit: cover;
-  /* background-image: url("../images/4k-mountain-l3f04sogeaabr5h0.jpg");
-  width: 100%;
-  height: 100%; */
+
 }
 
-.navigation{
-  transition: all .2s ease-in-out;
-  background-color: rgba(255, 255, 255, .5);
+.navigation {
+  transition: all 0.2s ease-in-out;
+  background-color: rgba(255, 255, 255, 0.5);
 }
 
-.changeOpacity{
-background-color: white;
+.changeOpacity {
+  background-color: white;
+}
+
+.card-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
 }
