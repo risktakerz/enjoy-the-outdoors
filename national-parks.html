@@ -55,7 +55,7 @@
     <div class="container mt-4">
       <div class="row">
         <div class="col-md-12">
-          <div class="btn-group">
+          <div class="btn-group mb-3">
             <input
               type="radio"
               class="btn-check"
@@ -77,22 +77,25 @@
               name="filterType"
               data-bs-toggle="collapse"
               data-bs-target="#parkTypeFilter"
-            />W
+            />
 
             <label class="btn btn-outline-primary" for="filterParkTypeBtn"
               >By Park Type</label
             >
           </div>
           <br />
-          <label for="statesSelect">States/Territories</label>
-          <select class="form-select" id="statesSelect">
-            <option value="">All...</option>
-          </select>
-
-          <label for="parkTypeSelect">Park Types</label>
-          <select class="form-select" id="parkTypeSelect">
-            <option value="">All...</option>
-          </select>
+          <div id="statesContainer">
+            <label for="statesSelect">States/Territories</label>
+            <select class="form-select" id="statesSelect">
+              <option value="">All...</option>
+            </select>
+          </div>
+          <div id="parkTypeContainer">
+            <label for="parkTypeSelect">Park Types</label>
+            <select class="form-select" id="parkTypeSelect">
+              <option value="">All...</option>
+            </select>
+          </div>
         </div>
       </div>
     </div>

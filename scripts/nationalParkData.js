@@ -5860,7 +5860,6 @@ function populateTable(nationalParksArray) {
   }
 }
 
-
 populateTable(nationalParksArray);
 
 function filterByStates() {
@@ -5912,14 +5911,12 @@ function filterByStates() {
 }
 
 function filterByParkType() {
-  let selectedState = statesSelect.value; 
-  let selectedParkType = parkTypeSelect.value; 
+  let selectedState = statesSelect.value;
+  let selectedParkType = parkTypeSelect.value;
 
- 
   let filteredParks = nationalParksArray.filter(
     (park) =>
-      (park.State === selectedState || selectedState === "") &&
-      (park.Type === selectedParkType || selectedParkType === "")
+      park.LocationName.includes(selectedParkType) || selectedParkType === ""
   );
 
   charactersTBody.innerHTML = "";
@@ -5964,7 +5961,33 @@ function filterByParkType() {
     tr.appendChild(td7);
   }
 }
+
+
+
+const statesContainer = document.querySelector("#statesContainer");
+const parkTypeContainer = document.querySelector("#parkTypeContainer");
+
+function searchTypeChanged() {
+  if (filterStateBtn.checked) {
+    statesContainer.style.display = "block";
+  } else {
+    statesContainer.style.display = "none";
+  }
+  if (filterParkTypeBtn.checked) {
+    parkTypeContainer.style.display = "block";
+  } else {
+    parkTypeContainer.style.display = "none";
+  }
+}
+
+filterStateBtn.onchange = searchTypeChanged;
+filterParkTypeBtn.onchange = searchTypeChanged;
+searchTypeChanged();
+
+
 statesSelect.addEventListener("change", filterByStates);
-filterParkTypeBtn.addEventListener("change", filterByParkType);
+parkTypeSelect.addEventListener("change", filterByParkType);
+
+
 filterParkTypeBtn.addEventListener("click", filterByStates);
 filterParkTypeBtn.addEventListener("click", filterByParkType);
